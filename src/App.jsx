@@ -1,11 +1,11 @@
-import { Header, Main, Hero } from "./components";
+import { Header, Hero, Service } from "./components";
 
 const App = () => {
   return (
     <>
     <Header/>
     <Hero/>
-    <Main/>
+    <Service/>
     </>
   )
 }

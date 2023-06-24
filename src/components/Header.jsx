@@ -3,8 +3,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { navLinks } from "../constants";
-import Button from "../ui/Button";
-import Theme from "../ui/Theme";
+import Button from "../utils/Button";
+import Theme from "../utils/Theme";
 
 const variants = {
   open: { opacity: 1, scale: 1 },

@@ -4,8 +4,17 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
+  mode: "jit",
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        accent: "#e4b702",
+      },
+      fontFamily: {
+        poppin: ["Poppins", "sans-serif"],
+        open: ["Open Sans", "sans-serif"],
+      },
+    },
   },
   plugins: [],
   darkMode: 'class',

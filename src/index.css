@@ -1,79 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-  @apply bg-teal-300 dark:bg-teal-900
-}
-.container {
-  @apply max-w-screen-lg mx-6;
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-.section {
-  @apply pt-[4.5rem] pb-8 px-0;
-}
-.section__title {
-  @apply text-[length:var(--h2-font-size)] mb-4;
-}
-.section__title span {
-  @apply text-[color:var(--second-color)];
-}
-.section__subtitle {
-  @apply block text-[length:var(--small-font-size)] text-[color:var(--second-color)];
+  @apply bg-teal-300 dark:bg-teal-900 font-open 
+  text-emerald-950 dark:text-emerald-50
 }
 
 .home {
   @apply pb-0;
   background: linear-gradient(170deg, hsl(0, 0%, 22%) 0%, hsl(0, 0%, 6%) 30%);
 }
-.home__container {
-  @apply gap-y-14 pt-16;
-}
-.home__title,
-.home__value-number {
-  @apply text-white;
-}
-.home__title {
-  @apply text-[length:var(--biggest-font-size)] leading-[120%] mb-5;
-}
-.home__description {
-  @apply text-[color:var(--text-color-light)] mb-8;
-}
-.home__search {
-  @apply bg-[color:var(--body-color)] flex items-center border-[color:var(--text-color-light)] mb-8 pl-3 pr-[0.35rem] py-[0.35rem] rounded-xl border-[3px] border-solid;
-}
-.home__search i {
-  @apply text-xl text-[color:var(--first-color)];
-}
-.home__search-input {
-  @apply w-[90%] bg-[color:var(--body-color)] text-[color:var(--text-color)] mx-2 my-0;
-}
-.home__search-input::placeholder {
-  @apply text-[color:var(--text-color-light)];
-}
-.home__value {
-  @apply flex gap-x-10;
-}
-.home__value-number {
-  @apply text-[length:var(--h1-font-size)] font-[number:var(--font-medium)];
-}
-.home__value-number span {
-  @apply text-[color:var(--second-color)];
-}
-.home__value-description {
-  @apply flex text-[color:var(--text-color-light)] text-[length:var(--smaller-font-size)];
-}
-.home__images {
-  @apply relative flex justify-center;
-}
-.home__orbe {
-  @apply w-[265px] h-[284px] rounded-[135px_135px_0_0];
-  background: linear-gradient(
-    180deg,
-    hsl(0, 0%, 16%) 93%,
-    hsl(0, 0%, 67%) 100%
-  );
-}
-.home__img {
-  @apply absolute w-[250px] h-[300px] overflow-hidden inline-flex items-end bottom-[-1.5rem] shadow-[0_16px_32px_hsla(228,66%,25%,0.25)] rounded-[125px_125px_12px_12px];
-}
+
