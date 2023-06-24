@@ -33,7 +33,7 @@ const Header = () => {
         ))}
       </ul>
 
-      <Button href="#" bgColor={false}>
+      <Button variant="secondary">
         Learn More
       </Button>
       <Theme/>

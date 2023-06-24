@@ -1,34 +1,44 @@
 import PropTypes from 'prop-types';
-import { motion } from "framer-motion"
 
-const Button = (props) => {
-  const bg = props.bgColor ? "bg-amber-600" : "";
+const Button = ({ variant, size, icon, children, ...rest }) => {
+  let className = 'flex items-center justify-center px-4 py-2 rounded-md font-medium focus:outline-none';
+
+  if (size === 'sm') {
+    className += ' text-sm';
+  } else if (size === 'lg') {
+    className += ' text-lg';
+  } else {
+    className += ' text-base';
+  }
+
+  if (variant === 'primary') {
+    className += ' bg-blue-500 text-white hover:bg-blue-600';
+  } else if (variant === 'secondary') {
+    className += ' bg-gray-300 text-gray-800 hover:bg-gray-400';
+  } else if (variant === 'outlined') {
+    className += ' border border-gray-300 text-gray-800 hover:bg-gray-100';
+  } else if (variant === 'icon') {
+    className += ' bg-transparent text-gray-800 hover:bg-gray-100';
+  }
+
   return (
-    <motion.a
-    initial={{ opacity: 0.6 }}
-    whileHover={{
-      scale: 1.1,
-      transition: { duration: .05 },
-    }}
-    whileTap={{ scale: 0.9 }}
-    whileInView={{ opacity: 1 }}
-      href={props.href}
-      title=""
-      className={`items-center justify-center
-      px-3 py-2 ml-10 text-white text-base font-semibold transition-all 
-      duration-200 ${bg} border-amber-600 border-4
-      rounded-md lg:inline-flex hover:${bg} focus:${bg}`}
-      role="button"
-    >
-      {props.children}
-    </motion.a>
+    <button className={className} {...rest}>
+      {icon && <span className="mr-2">{icon}</span>}
+      {children}
+    </button>
   );
 };
 
 Button.propTypes = {
+  variant: PropTypes.oneOf(['primary', 'secondary', 'outlined', 'icon']),
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  icon: PropTypes.node,
   children: PropTypes.node.isRequired,
-  href: PropTypes.string.isRequired,
-  bgColor: PropTypes.string.isRequired,
+};
+
+Button.defaultProps = {
+  variant: 'primary',
+  size: 'md',
 };
 
 export default Button;
