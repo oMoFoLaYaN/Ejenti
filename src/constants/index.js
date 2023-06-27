@@ -23,6 +23,25 @@ export const navLinks = [
   },
 ];
 
+export const contacts = [
+  {
+    id: "location",
+    name: "Obafemi Awolowo University, Ile-ife",
+  },
+  {
+    id: "open",
+    name: "Mon-Sat: 11AM - 23PM",
+  },
+  {
+    id: "email",
+    name: "hestate@gmail.com",
+  },
+  {
+    id: "phone",
+    name: "+234 708 940 9288",
+  },
+];
+
 export const stats = [
   {
     title: "Premium Product",
@@ -53,5 +72,59 @@ export const services = [
     img: maintenance,
     title: "Maintenance",
     body: "Oversee maintenance, handle repairs, and ensure properties are well-maintained, saving time and effort for property owners."
+  },
+];
+
+export const footerLinks = [
+  {
+    title: "About",
+    links: [
+      {
+        name: "About Us",
+        link: "#",
+      },
+      {
+        name: "Features",
+        link: "#",
+      },
+      {
+        name: "New & Blog",
+        link: "#",
+      },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      {
+        name: "Team",
+        link: "#",
+      },
+      {
+        name: "Plan & Pricing",
+        link: "#",
+      },
+      {
+        name: "Become a member",
+        link: "#",
+      },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      {
+        name: "FAQs",
+        link: "#",
+      },
+      {
+        name: "Support Center",
+        link: "#",
+      },
+      {
+        name: "Contact Us",
+        link: "#",
+      },
+    ],
   },
 ];

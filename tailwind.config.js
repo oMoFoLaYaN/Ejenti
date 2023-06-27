@@ -11,8 +11,8 @@ export default {
         accent: "#e4b702",
       },
       fontFamily: {
-        poppin: ["Poppins", "sans-serif"],
-        open: ["Open Sans", "sans-serif"],
+        brand: ["Belanosima", "sans-serif"],
+        plain: ["Poppins", "sans-serif"],
       },
     },
   },

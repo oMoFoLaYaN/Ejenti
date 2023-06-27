@@ -12,7 +12,7 @@ const ServiceSection = () => {
           <img src={service.img} alt="" className="relative z-10 w-48" />
           <div className="h-fit bg-white pt-20 pb-5 px-5 relative -top-20">
             <h2
-              className="font-medium font-poppin 
+              className="font-medium font-brand 
               text-xl lg:text-2xl"
             >
               {service.title}

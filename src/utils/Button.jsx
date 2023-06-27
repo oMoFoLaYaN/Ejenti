@@ -3,22 +3,30 @@ import PropTypes from 'prop-types';
 const Button = ({ variant, size, icon, children, ...rest }) => {
   let className = 'flex items-center justify-center px-4 py-2 rounded-md font-medium focus:outline-none';
 
-  if (size === 'sm') {
-    className += ' text-sm';
-  } else if (size === 'lg') {
-    className += ' text-lg';
-  } else {
-    className += ' text-base';
+  switch (size) {
+    case 'sm':
+      className += ' text-sm';
+      break;
+    case 'lg':
+      className += ' text-lg';
+      break;
+    default:
+      className += ' text-base';
   }
 
-  if (variant === 'primary') {
-    className += ' bg-blue-500 text-white hover:bg-blue-600';
-  } else if (variant === 'secondary') {
-    className += ' bg-gray-300 text-gray-800 hover:bg-gray-400';
-  } else if (variant === 'outlined') {
-    className += ' border border-gray-300 text-gray-800 hover:bg-gray-100';
-  } else if (variant === 'icon') {
-    className += ' bg-transparent text-gray-800 hover:bg-gray-100';
+  switch (variant) {
+    case 'primary':
+      className += ' bg-blue-500 text-white hover:bg-blue-600';
+      break;
+    case 'secondary':
+      className += ' bg-gray-300 text-gray-800 hover:bg-gray-400';
+      break;
+    case 'outlined':
+      className += ' border border-gray-300 text-gray-800 hover:bg-gray-100';
+      break;
+    case 'icon':
+      className += ' bg-transparent text-gray-800 hover:bg-gray-100';
+      break;
   }
 
   return (

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { navLinks } from "../constants";
 import Button from "../utils/Button";
 import Theme from "../utils/Theme";
+import { logo } from "../assets";
 
 const variants = {
   open: { opacity: 1, scale: 1 },
@@ -17,7 +18,7 @@ const Header = () => {
 
   return (
     <nav className="bg- w-full flex py-6 justify-between items-center navbar">
-      <h1 className="w-[124px] h-[32px] text-teal-700">Framer </h1>
+      <img src={logo} alt="hestate" className="w-36" />
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
