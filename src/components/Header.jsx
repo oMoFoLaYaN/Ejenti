@@ -1,81 +1,81 @@
+import { useEffect, useState } from "react";
 import { BsXLg, BsList } from "react-icons/bs";
-import { useState } from "react";
 import { motion } from "framer-motion";
 
-import { navLinks } from "../constants";
 import Button from "../utils/Button";
 import Theme from "../utils/Theme";
+import { styles } from "../style";
+import Navlist from "./Navlist";
 import { logo } from "../assets";
 
-const variants = {
-  open: { opacity: 1, scale: 1 },
-  closed: { opacity: 1, scale: 0.5 },
-};
-
-const Header = () => {
-  const [active, setActive] = useState("Home");
+const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="bg- w-full flex py-6 justify-between items-center navbar">
-      <img src={logo} alt="hestate" className="w-36" />
-
-      <ul className="list-none sm:flex hidden justify-end items-center flex-1">
-        {navLinks.map((nav, index) => (
-          <li
-            key={nav.id}
-            className={`font-normal capitalize cursor-pointer text-[16px] ${
-              active === nav.title ? "text-white" : "text-stone-300"
-            } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-            onClick={() => setActive(nav.title)}
-          >
-            <a href={`#${nav.id}`}>{nav.title}</a>
-          </li>
-        ))}
-      </ul>
-
-      <Button variant="secondary">
-        Learn More
-      </Button>
-      <Theme/>
-
-      <div className="sm:hidden flex flex-1 justify-end items-center">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9}}
-          className="p-2 rounded-full bg-amber-400"
-          onClick={() => setToggle((toggle) => !toggle)}
+    <header
+      className={`${
+        styles.paddingX
+      } w-full flex items-center py-5 fixed top-0 z-20 ${
+        scrolled ? "bg-accent" : "bg-transparent"
+      }`}
+    >
+      <nav className="w-full flex justify-between items-center max-w-7xl mx-auto">
+        <a
+          onClick={() => {
+            setActive("");
+            window.scrollTo(0, 0);
+          }}
+          href="index.html"
         >
+          <img src={logo} alt="heststate" className="w-24 md:w-36" />
+        </a>
+
+        <ul className="list-none hidden lg:flex flex-row gap-10">
+          <Navlist />
+        </ul>
+
+        <div className="flex flex-row space-x-5">
+          <Button>Subcribe</Button>
+          <Theme />
+        </div>
+      </nav>
+      <div className="ml-5 sm:hidden flex justify-end items-center">
+        <motion.div onClick={() => setToggle((toggle) => !toggle)}>
           {toggle ? (
-            <BsXLg className="w-5 h-5" />
+            <BsXLg className="w-5 h-5 text-red-400" />
           ) : (
-            <BsList className="w-6 h-6" />
+            <BsList className="w-6 h-6 text-red-400" />
           )}
         </motion.div>
-        <motion.div
-          animate={toggle ? "open" : "closed"}
-          variants={variants}
+
+        <div
           className={`${
             !toggle ? "hidden" : "flex"
-          } p-6 bg-neutral-500 absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl`}
+          } p-6 black-gradient absolute bg-amber-300 top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
         >
-          <ul className="list-none flex justify-end items-start flex-1 flex-col">
-            {navLinks.map((nav, index) => (
-              <li
-                key={nav.id}
-                className={`capitalize font-medium cursor-pointer text-[16px] ${
-                  active === nav.title ? "text-white" : "text-stone-300"
-                } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
-                onClick={() => setActive(nav.title)}
-              >
-                <a href={`#${nav.id}`}>{nav.title}</a>
-              </li>
-            ))}
+          <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
+            <Navlist />
           </ul>
-        </motion.div>
+        </div>
       </div>
-    </nav>
+    </header>
   );
 };
 
-export default Header;
+export default Navbar;

@@ -41,7 +41,7 @@ const Hero = () => {
         <div className="home__images relative flex justify-center">
           <div className="home__orbe" />
           <div className="home__img">
-            <img src="assets/img/home.jpg" alt="" />
+            <img src="" alt="" />
           </div>
         </div>
 
