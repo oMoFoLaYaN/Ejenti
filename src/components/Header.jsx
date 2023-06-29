@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
-import { BsXLg, BsList } from "react-icons/bs";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
-import Button from "../utils/Button";
-import Theme from "../utils/Theme";
-import { styles } from "../style";
-import Navlist from "./Navlist";
-import { logo } from "../assets";
+import { navLinks } from "../constants";
+import { logo, menu, close } from "../assets";
 
 const Navbar = () => {
+  const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -28,53 +25,74 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header
-      className={`${
-        styles.paddingX
-      } w-full flex items-center py-5 fixed top-0 z-20 ${
-        scrolled ? "bg-accent" : "bg-transparent"
+    <nav
+      className={`sm:px-16 px-6 w-full flex items-center py-5 fixed top-0 z-20 ${
+        scrolled ? "bg-primary" : "bg-transparent"
       }`}
     >
-      <nav className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        <a
+      <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
+        <Link
+          to='/'
+          className='flex items-center gap-2'
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
           }}
-          href="index.html"
         >
-          <img src={logo} alt="heststate" className="w-24 md:w-36" />
-        </a>
+          <img src={logo} alt='logo' className='w-9 h-9 object-contain' />
+          <p className='text-white text-[18px] font-bold cursor-pointer flex '>
+            Adrian &nbsp;
+            <span className='sm:block hidden'> | JavaScript Mastery</span>
+          </p>
+        </Link>
 
-        <ul className="list-none hidden lg:flex flex-row gap-10">
-          <Navlist />
+        <ul className='list-none hidden sm:flex flex-row gap-10'>
+          {navLinks.map((nav) => (
+            <li
+              key={nav.id}
+              className={`${
+                active === nav.title ? "text-white" : "text-secondary"
+              } hover:text-white text-[18px] font-medium cursor-pointer`}
+              onClick={() => setActive(nav.title)}
+            >
+              <a href={`#${nav.id}`}>{nav.title}</a>
+            </li>
+          ))}
         </ul>
 
-        <div className="flex flex-row space-x-5">
-          <Button>Subcribe</Button>
-          <Theme />
-        </div>
-      </nav>
-      <div className="ml-5 sm:hidden flex justify-end items-center">
-        <motion.div onClick={() => setToggle((toggle) => !toggle)}>
-          {toggle ? (
-            <BsXLg className="w-5 h-5 text-red-400" />
-          ) : (
-            <BsList className="w-6 h-6 text-red-400" />
-          )}
-        </motion.div>
+        <div className='sm:hidden flex flex-1 justify-end items-center'>
+          <img
+            src={toggle ? close : menu}
+            alt='menu'
+            className='w-[28px] h-[28px] object-contain'
+            onClick={() => setToggle(!toggle)}
+          />
 
-        <div
-          className={`${
-            !toggle ? "hidden" : "flex"
-          } p-6 black-gradient absolute bg-amber-300 top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
-        >
-          <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
-            <Navlist />
-          </ul>
+          <div
+            className={`${
+              !toggle ? "hidden" : "flex"
+            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+          >
+            <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
+              {navLinks.map((nav) => (
+                <li
+                  key={nav.id}
+                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
+                    active === nav.title ? "text-white" : "text-secondary"
+                  }`}
+                  onClick={() => {
+                    setToggle(!toggle);
+                    setActive(nav.title);
+                  }}
+                >
+                  <a href={`#${nav.id}`}>{nav.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-    </header>
+    </nav>
   );
 };
 
